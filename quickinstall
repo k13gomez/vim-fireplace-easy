@@ -36,6 +36,15 @@ done
 
 shift $((OPTIND-1))
 
+cpwd=${pwd}
+if [ -a ./bundle/Vundle.vim/.git ]; then
+	cd ./bundle/Vundle.vim
+	git pull
+	cd $cpwd
+else
+	git clone https://github.com/gmarik/Vundle.vim ./bundle/Vundle.vim
+fi
+
 if [ -a ~/.vim ]; then
     old_plugins=true
 fi
@@ -67,6 +76,6 @@ fi
 
 ln -s ${__dir} ~/.vim
 ln -s ~/.vim/vimrc.vim ~/.vimrc
+vim +PluginInstall +qall
 vim -c "helptags ~/.vim/bundle/vim-fireplace/doc" -c "q"
 vim ${__dir}/README.md -c "26 :norm zt"
-
