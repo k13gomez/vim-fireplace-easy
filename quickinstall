@@ -14,6 +14,7 @@ echo ""
 }
 
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 now=`date`
 backup_path="${HOME}/oldvim/${now}/"
 backup_path=${backup_path//[: ]/} #remove space and : characters from date
@@ -36,7 +37,7 @@ done
 
 shift $((OPTIND-1))
 
-cpwd=${pwd}
+cpwd="$(pwd)"
 if [ -a ./bundle/Vundle.vim/.git ]; then
 	cd ./bundle/Vundle.vim
 	git pull
@@ -70,7 +71,7 @@ if [  -n "${old_config}"  -o  -n "${old_plugins}" ]; then
     fi
 
     if [ -n "${old_plugins}" ]; then
-        cp -RHf ~/.vim "${backup_path}"  && rm -r ~/.vim && echo "NOTICE: Your old vim plugins have been moved to ${backup_path}"
+        cp -RHf ~/.vim "${backup_path}"  && rm -rf ~/.vim && echo "NOTICE: Your old vim plugins have been moved to ${backup_path}"
     fi
 fi
 
