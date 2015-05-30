@@ -15,7 +15,7 @@ If you have an existing Vim configuration, first move it out of the way. You can
 
 Now clone this repo into `~/.vim` and set it up:
 
-    $ git clone git@github.com:ctford/vim-fireplace-easy.git ~/.vim
+    $ git clone git@github.com:k13gomez/vim-fireplace-easy.git ~/.vim
     $ ln -s ~/.vim/vimrc.vim ~/.vimrc
     $ vim -c "helptags ~/.vim/bundle/vim-fireplace/doc" -c "q"
 
@@ -35,8 +35,7 @@ If syntax highlighting doesn't work, make sure `.vim` is in your home directory 
 
 Now we want to get to the serious stuff. Make sure you have [Leiningen](https://github.com/technomancy/leiningen) installed. Then, inside a Leiningen project:
 
-    $ lein repl
-    $ vim somefile.clj
+    $ vim +Console somefile.clj
 
 Fireplace should automatically connect to the nREPL instance Leiningen has started for you.
 
@@ -51,6 +50,14 @@ Place the cursor inside a Clojure expression and run the `cpp` command. Fireplac
 Place the cursor over a Clojure symbol and run the `K` command. Fireplace will display the documentation for that symbol.
 
 Place the cursor over a Clojure symbol and run the `[d` command. Fireplace will display the source for that symbol.
+
+## Custom command key bindings
+
+- Run the `,tt` command to toggle NERDTree in all tabs.
+- Run the `,ff` command to toggle NERDTree focus.
+- Run the `,repl` command to open a new REPL session.
+- Run the `,aa` command to alternate between test and implementation.
+- Run the `,ee` command to evaluate the entire file in the current REPL session.
 
 # What's Next?
 
