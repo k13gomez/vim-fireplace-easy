@@ -33,11 +33,35 @@ If syntax highlighting doesn't work, make sure `.vim` is in your home directory 
 
 ## Starting nREPL 
 
-Now we want to get to the serious stuff. Make sure you have [Leiningen](https://github.com/technomancy/leiningen) installed. Then, inside a Leiningen project:
+Now we want to get to the serious stuff. Make sure you have [Leiningen](https://github.com/technomancy/leiningen) installed.
+
+### Option 1
+
+Start vim and automatically start a new Leiningen nREPL session at the same time, inside a Leiningen project run:
 
     $ vim +Console somefile.clj
 
-Fireplace should automatically connect to the nREPL instance Leiningen has started for you.
+Fireplace should automatically start a Leiningen nREPL session and connect to the nREPL instance Leiningen has started for you.
+
+### Option 2
+
+Manually start a new Leiningen nREPL session, inside a Leiningen project run:
+
+    $ lein repl
+
+Then on a separate console simply open the file to edit:
+
+    $ vim somefile.clj
+
+Fireplace will automatically connect to the nREPL instance Leiningen has started for you.
+
+### Option 3
+
+Simply open the file to edit, inside a Leiningen project run:
+
+    $ vim somefile.clj
+
+Then start a new Leiningen nREPL session by running the `:Console` command, conveniently mapped to the key sequence `,repl`, and Fireplace will automatically connect to the nREPL instance Leiningen has started for you.
 
 ## Second Test - The REPL
 
