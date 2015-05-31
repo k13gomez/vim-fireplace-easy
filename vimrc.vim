@@ -70,3 +70,10 @@ nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
 nnoremap <Leader>repl :Console<CR>
 nnoremap <Leader>aa :A<CR>
 nnoremap <Leader>ee :%Eval<CR>
+nnoremap <F9> :copen<CR>
+nnoremap <F10> :cprevious<CR>
+nnoremap <F11> :cnext<CR>
+
+" java configuration
+autocmd Filetype java set makeprg=javac\ %
+autocmd Filetype java set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
