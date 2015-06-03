@@ -14,6 +14,7 @@ Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fireplace.git'
 Plugin 'rainbow_parentheses.vim'
 Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
 Plugin 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 
@@ -70,6 +71,7 @@ nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
 nnoremap <Leader>repl :Console<CR>
 nnoremap <Leader>aa :A<CR>
 nnoremap <Leader>ee :%Eval<CR>
+nnoremap <Leader>ss :ClojureHighlightReferences<CR>
 nnoremap <F8> :copen<CR>
 nnoremap <F9> :cprevious<CR>
 nnoremap <F10> :cnext<CR>
