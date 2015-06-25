@@ -16,6 +16,7 @@ Plugin 'rainbow_parentheses.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'scrooloose/nerdtree'
+Plugin 'indentjava.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
 
 call vundle#end()
@@ -33,6 +34,9 @@ call vundle#end()
 call pathogen#infect() 
 syntax on
 filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 " Paredit
 " let g:paredit_mode = 0
