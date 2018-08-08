@@ -11,3 +11,5 @@
 
 (pig-latin "hello")
 (pig-latin "vimclojure")
+
+(pig-latin "foobar")
