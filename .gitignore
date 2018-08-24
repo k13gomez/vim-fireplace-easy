@@ -2,3 +2,5 @@
 .lein-repl-history
 bundle
 target
+.idea
+*.iml
