@@ -14,6 +14,9 @@ set ruler
 set expandtab
 set tabstop=4
 set rtp+=~/.vim/bundle/Vundle.vim
+
+let g:vundle_default_git_proto = 'git'
+
 call vundle#begin()
 
 Plugin 'tpope/vim-classpath.git'
@@ -21,13 +24,13 @@ Plugin 'tpope/vim-leiningen.git'
 Plugin 'tpope/vim-projectionist.git'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fireplace.git'
+Plugin 'tpope/vim-surround.git'
 Plugin 'rainbow_parentheses.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'indentjava.vim'
 Plugin 'Shougo/neocomplete.vim.git'
-Plugin 'elixir-lang/vim-elixir.git'
 Bundle 'jistr/vim-nerdtree-tabs'
 
 call vundle#end()
@@ -84,13 +87,11 @@ set backspace=indent,eol,start
 let mapleader=","
 nnoremap <Leader>tt :NERDTreeTabsToggle<CR>
 nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
-nnoremap <Leader>repl :Console<CR>
-nnoremap <Leader>aa :A<CR>
-nnoremap <Leader>ee :%Eval<CR>
-nnoremap <Leader>ss :ClojureHighlightReferences<CR>
-nnoremap <F8> :copen<CR>
-nnoremap <F9> :cprevious<CR>
-nnoremap <F10> :cnext<CR>
+au Filetype clojure nmap <Leader>repl :Console<CR>
+au Filetype clojure nmap <Leader>aa :A<CR>
+au Filetype clojure nmap <Leader>ee :%Eval<CR>
+au Filetype clojure nmap <Leader>ss :ClojureHighlightReferences<CR>
+au Filetype clojure nmap <Leader>rr :Require<CR>
 
 " java configuration
 autocmd Filetype java set makeprg=javac\ %
