@@ -164,5 +164,5 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " status line improvements
-set statusline=%f\ %y
+set statusline=%f\ %y\ [L:%l/%L,C:%c]\ %{FugitiveStatusline()}
 set laststatus=2
