@@ -32,6 +32,7 @@ Plugin 'guns/vim-clojure-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'indentjava.vim'
 Plugin 'Shougo/neocomplete.vim.git'
+Plugin 'mhinz/vim-startify.git'
 Bundle 'jistr/vim-nerdtree-tabs'
 
 call vundle#end()
@@ -54,7 +55,7 @@ set shiftwidth=4
 set expandtab
 
 " Paredit
-" let g:paredit_mode = 0
+let g:paredit_mode = 0
 
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
