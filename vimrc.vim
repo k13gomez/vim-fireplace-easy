@@ -25,6 +25,7 @@ Plugin 'tpope/vim-projectionist.git'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'tpope/vim-fireplace.git'
 Plugin 'tpope/vim-fugitive.git'
+Plugin 'tpope/vim-dotenv.git'
 Plugin 'rainbow_parentheses.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
@@ -87,15 +88,25 @@ set backspace=indent,eol,start
 let mapleader=","
 nnoremap <Leader>tt :NERDTreeTabsToggle<CR>
 nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
+au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
+au Filetype clojure nmap <Leader>pig :Piggieback (figwheel-sidecar.repl-api/repl-env)<CR>
+au Filetype clojure nmap <Leader>fig :Eval (user/start)<CR>
+au Filetype clojure nmap <Leader>cljs :Eval (user/cljs)<CR>
+au Filetype clojure nmap <Leader>gif :Eval (user/stop)<CR>
 au Filetype clojure nmap <Leader>aa :A<CR>
 au Filetype clojure nmap <Leader>ee :%Eval<CR>
+au Filetype clojure nmap <Leader>er :Eval<CR>
 au Filetype clojure nmap <Leader>ss :ClojureHighlightReferences<CR>
 au Filetype clojure nmap <Leader>rr :Require<CR>
+au Filetype clojure nmap <Leader>ra :Require!<CR>
 
 " java configuration
 autocmd Filetype java set makeprg=javac\ %
 autocmd Filetype java set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+
+" cljs configuration
+autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
 
 " autocomplete configuration
 autocmd CompleteDone * pclose
@@ -122,6 +133,14 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Clojure Syntax and Formatting
+let g:clojure_fuzzy_indent = 1
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
+let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
+let g:clojure_align_multiline_strings = 0
+let g:clojure_align_subforms = 0
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
