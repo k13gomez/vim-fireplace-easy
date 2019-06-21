@@ -84,11 +84,32 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+" Utility functions
+function! Guid()
+python << EOF
+import uuid, vim
+vim.command("normal i" + str(uuid.uuid4()) )
+EOF
+endfunction
+
+function! DateTimeNow()
+python << EOF
+import time, vim
+now = time.time()
+mlsec = repr(now).split('.')[1][:3]
+vim.command("normal i" + time.strftime("%Y-%m-%dT%H:%M:%S.{}%z".format(mlsec), time.localtime(now)))
+EOF
+endfunction
+
+" Alternate mappings
+
 " key mappings
 set backspace=indent,eol,start
 let mapleader=","
 nnoremap <Leader>tt :NERDTreeTabsToggle<CR>
 nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
+nnoremap <Leader>guid :call Guid()<CR>
+nnoremap <Leader>now :call DateTimeNow()<CR>
 au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
 au Filetype clojure nmap <Leader>pig :Piggieback (figwheel-sidecar.repl-api/repl-env)<CR>
@@ -137,7 +158,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Clojure Syntax and Formatting
 let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^alet']
 let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
 let g:clojure_align_multiline_strings = 0
