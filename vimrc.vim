@@ -34,6 +34,7 @@ Plugin 'indentjava.vim'
 Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'mhinz/vim-startify.git'
 Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'wincent/command-t'
 
 call vundle#end()
 " Brief help
@@ -110,6 +111,8 @@ nnoremap <Leader>tt :NERDTreeTabsToggle<CR>
 nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
 nnoremap <Leader>guid :call Guid()<CR>
 nnoremap <Leader>now :call DateTimeNow()<CR>
+nnoremap <Leader>ll :set number<CR>
+nnoremap <Leader>nl :set nonumber<CR>
 au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
 au Filetype clojure nmap <Leader>pig :Piggieback (figwheel-sidecar.repl-api/repl-env)<CR>
@@ -158,7 +161,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Clojure Syntax and Formatting
 let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^alet']
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^alet', '^async']
 let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
 let g:clojure_align_multiline_strings = 0
