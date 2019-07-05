@@ -115,8 +115,8 @@ nnoremap <Leader>ll :set number<CR>
 nnoremap <Leader>nl :set nonumber<CR>
 au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
-au Filetype clojure nmap <Leader>pig :Piggieback (figwheel-sidecar.repl-api/repl-env)<CR>
 au Filetype clojure nmap <Leader>fig :Eval (user/start)<CR>
+au Filetype clojure nmap <Leader>pig :Piggieback (figwheel-sidecar.repl-api/repl-env)<CR>
 au Filetype clojure nmap <Leader>cljs :Eval (user/cljs)<CR>
 au Filetype clojure nmap <Leader>gif :Eval (user/stop)<CR>
 au Filetype clojure nmap <Leader>aa :A<CR>
