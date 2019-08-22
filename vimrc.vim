@@ -34,6 +34,7 @@ Plugin 'indentjava.vim'
 Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'mhinz/vim-startify.git'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'venantius/vim-cljfmt'
 Plugin 'wincent/command-t'
 
 call vundle#end()
@@ -87,14 +88,14 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Utility functions
 function! Guid()
-python << EOF
+python3 << EOF
 import uuid, vim
 vim.command("normal i" + str(uuid.uuid4()) )
 EOF
 endfunction
 
 function! DateTimeNow()
-python << EOF
+python3 << EOF
 import time, vim
 now = time.time()
 mlsec = repr(now).split('.')[1][:3]
@@ -107,12 +108,15 @@ endfunction
 " key mappings
 set backspace=indent,eol,start
 let mapleader=","
+nnoremap <Leader>te :tabedit<CR>
 nnoremap <Leader>tt :NERDTreeTabsToggle<CR>
 nnoremap <Leader>ff :NERDTreeFocusToggle<CR>
 nnoremap <Leader>guid :call Guid()<CR>
 nnoremap <Leader>now :call DateTimeNow()<CR>
 nnoremap <Leader>ll :set number<CR>
 nnoremap <Leader>nl :set nonumber<CR>
+nnoremap <Leader>pp :set paste<CR>
+nnoremap <Leader>np :set nopaste<CR>
 au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
 au Filetype clojure nmap <Leader>fig :Eval (user/start)<CR>
@@ -254,6 +258,9 @@ set statusline+=%3*│                                     " Separator
 set statusline+=%1*\ Line:\ %02l/%L\ (%3p%%)\            " Line number / total lines, percentage of document
 set statusline+=\ [%b][0x%B]\                            " ASCII and byte code under cursor
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
+
+" command-t config 
+let g:CommandTWildIgnore=&wildignore . ",*/bower_components,*/target,*/node_modules"
 
 hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
 hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
