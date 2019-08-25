@@ -168,8 +168,8 @@ let g:clojure_fuzzy_indent = 1
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^alet', '^async']
 let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
+let g:clojure_align_subforms = 1
 let g:clojure_align_multiline_strings = 0
-let g:clojure_align_subforms = 0
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
