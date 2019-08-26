@@ -33,9 +33,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'indentjava.vim'
 Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'mhinz/vim-startify.git'
+Plugin 'hashivim/vim-terraform'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'venantius/vim-cljfmt'
 Plugin 'wincent/command-t'
+Plugin 'paradigm/vim-multicursor.git'
 
 call vundle#end()
 " Brief help
@@ -117,6 +119,7 @@ nnoremap <Leader>ll :set number<CR>
 nnoremap <Leader>nl :set nonumber<CR>
 nnoremap <Leader>pp :set paste<CR>
 nnoremap <Leader>np :set nopaste<CR>
+
 au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
 au Filetype clojure nmap <Leader>fig :Eval (user/start)<CR>
@@ -139,6 +142,16 @@ autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
 
 " autocomplete configuration
 autocmd CompleteDone * pclose
+
+" Vim MultiCursor
+nnoremap <Leader>ma :<c-u>call MultiCursorPlaceCursor()<cr>
+nnoremap <Leader>mm :<c-u>call MultiCursorManual()<cr>
+nnoremap <Leader>mc :<c-u>call MultiCursorRemoveCursors()<cr>
+xnoremap <Leader>mv :<c-u>call MultiCursorVisual()<cr>
+nnoremap <Leader>ms :<c-u>call MultiCursorSearch('')<cr>
+nnoremap <Leader>mw :<c-u>call MultiCursorSearch('<c-r><c-w>')<cr>
+xnoremap <Leader>ms "*y<Esc>:call MultiCursorSearch('<c-r>=substitute(escape(@*, '\/.*$^~[]'), "\n", '\\n', "g")<cr>')<cr>
+let g:multicursor_quit = "<Leader>mx"
 
 let g:SuperTabCrMapping = 0
 " Disable AutoComplPop.
@@ -170,6 +183,13 @@ let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
 let g:clojure_align_subforms = 1
 let g:clojure_align_multiline_strings = 0
+
+" Terraform config
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+let g:terraform_fold_sections=0
+let g:terraform_remap_spacebar=0
+
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
