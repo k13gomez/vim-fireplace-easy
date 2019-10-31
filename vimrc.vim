@@ -36,6 +36,8 @@ Plugin 'mhinz/vim-startify.git'
 Plugin 'hashivim/vim-terraform'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'venantius/vim-cljfmt'
+Bundle 'pangloss/vim-javascript.git'
+Plugin 'mxw/vim-jsx.git'
 Plugin 'wincent/command-t'
 Plugin 'paradigm/vim-multicursor.git'
 
@@ -137,6 +139,9 @@ au Filetype clojure nmap <Leader>ra :Require!<CR>
 autocmd Filetype java set makeprg=javac\ %
 autocmd Filetype java set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 
+" javascript configurration
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
+
 " cljs configuration
 autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
 
@@ -178,7 +183,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Clojure Syntax and Formatting
 let g:clojure_fuzzy_indent = 1
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^alet', '^async']
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^fdef', '?']
 let g:clojure_fuzzy_indent_blacklist = ['-fn$', '\v^with-%(meta|out-str|loading-context)$']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn'
 let g:clojure_align_subforms = 1
