@@ -37,6 +37,8 @@ Plugin 'hashivim/vim-terraform'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'venantius/vim-cljfmt'
 Bundle 'pangloss/vim-javascript.git'
+Plugin 'jrozner/vim-antlr.git'
+Plugin 'bnf.vim'
 Plugin 'mxw/vim-jsx.git'
 Plugin 'wincent/command-t'
 Plugin 'paradigm/vim-multicursor.git'
@@ -91,6 +93,35 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " Utility functions
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
+
 function! Guid()
 python3 << EOF
 import uuid, vim
@@ -144,6 +175,9 @@ autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
 
 " cljs configuration
 autocmd BufRead,BufNewFile *.cljs setlocal filetype=clojure
+
+" bnf configuration
+autocmd BufRead,BufNewFile *.bnf setlocal filetype=bnf
 
 " autocomplete configuration
 autocmd CompleteDone * pclose
@@ -311,3 +345,10 @@ let &t_SR.="\e[4 q"
 let &t_EI.="\e[1 q"
 " exit insert mode with ctrl-c 
 imap <C-c> <Esc>
+
+" copy paste from system clipboard
+set clipboard=unnamed
+vmap ç "*y
+vmap ≈ "*d
+nmap √ :set paste<CR>"*p:set nopaste<CR>
+imap √ <ESC>√
