@@ -27,6 +27,7 @@ Plugin 'tpope/vim-fireplace.git'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-dotenv.git'
 Plugin 'rainbow_parentheses.vim'
+Plugin 'paredit.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'scrooloose/nerdtree'
@@ -40,7 +41,6 @@ Bundle 'pangloss/vim-javascript.git'
 Plugin 'jrozner/vim-antlr.git'
 Plugin 'bnf.vim'
 Plugin 'mxw/vim-jsx.git'
-Plugin 'wincent/command-t'
 Plugin 'paradigm/vim-multicursor.git'
 
 call vundle#end()
@@ -63,12 +63,12 @@ set shiftwidth=4
 set expandtab
 
 " Paredit
-let g:paredit_mode = 0
+let g:paredit_mode = 1
 
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
+    \ ['green',       'SeaGreen3'],
     \ ['darkgray',    'DarkOrchid3'],
     \ ['darkgreen',   'firebrick3'],
     \ ['darkcyan',    'RoyalBlue3'],
@@ -76,7 +76,7 @@ let g:rbpt_colorpairs = [
     \ ['brown',       'firebrick3'],
     \ ['gray',        'RoyalBlue3'],
     \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
+    \ ['green',       'firebrick3'],
     \ ['darkgreen',   'RoyalBlue3'],
     \ ['darkcyan',    'SeaGreen3'],
     \ ['darkred',     'DarkOrchid3'],
@@ -164,6 +164,7 @@ au Filetype clojure nmap <Leader>ee :%Eval<CR>
 au Filetype clojure nmap <Leader>er :Eval<CR>
 au Filetype clojure nmap <Leader>ss :ClojureHighlightReferences<CR>
 au Filetype clojure nmap <Leader>rr :Require<CR>
+au Filetype clojure nmap <Leader>rem :Eval (remove-ns (ns-name *ns*))<CR>
 au Filetype clojure nmap <Leader>ra :Require!<CR>
 
 " java configuration
