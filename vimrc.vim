@@ -36,12 +36,8 @@ Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'mhinz/vim-startify.git'
 Plugin 'hashivim/vim-terraform'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'venantius/vim-cljfmt'
 Bundle 'pangloss/vim-javascript.git'
-Plugin 'jrozner/vim-antlr.git'
-Plugin 'bnf.vim'
 Plugin 'mxw/vim-jsx.git'
-Plugin 'paradigm/vim-multicursor.git'
 
 call vundle#end()
 " Brief help
@@ -152,6 +148,7 @@ nnoremap <Leader>ll :set number<CR>
 nnoremap <Leader>nl :set nonumber<CR>
 nnoremap <Leader>pp :set paste<CR>
 nnoremap <Leader>np :set nopaste<CR>
+nnoremap <Leader>par :call PareditToggle()<CR>
 
 au Filetype clojure nmap <Leader>env :verbose Dotenv export-env<CR>
 au Filetype clojure nmap <Leader>repl :Console<CR>
