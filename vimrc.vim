@@ -31,6 +31,11 @@ Plugin 'rainbow_parentheses.vim'
 Plugin 'paredit.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'jrdoane/vim-clojure-highlight'
+
+Plugin 'Shougo/deoplete.nvim.git'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'indentjava.vim'
 Plugin 'mhinz/vim-startify.git'
@@ -195,6 +200,9 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 let g:terraform_fold_sections=0
 let g:terraform_remap_spacebar=0
+
+" autocomplete
+let g:deoplete#enable_at_startup = 1
 
 " Commenting blocks of code.
 autocmd FileType c,cs,cpp,java,scala        let b:comment_leader = '//'
