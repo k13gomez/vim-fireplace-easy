@@ -19,6 +19,7 @@ let g:vundle_default_git_proto = 'git'
 
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim.git'
 Plugin 'tpope/vim-classpath.git'
 Plugin 'tpope/vim-leiningen.git'
 Plugin 'tpope/vim-projectionist.git'
@@ -29,7 +30,7 @@ Plugin 'tpope/vim-dotenv.git'
 Plugin 'rainbow_parentheses.vim'
 Plugin 'paredit.vim'
 Plugin 'guns/vim-clojure-static'
-Plugin 'guns/vim-clojure-highlight'
+Plugin 'jrdoane/vim-clojure-highlight'
 Plugin 'scrooloose/nerdtree'
 Plugin 'indentjava.vim'
 Plugin 'Shougo/neocomplete.vim.git'
