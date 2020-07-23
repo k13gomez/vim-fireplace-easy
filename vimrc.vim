@@ -29,6 +29,8 @@ Plugin 'tpope/vim-fugitive.git'
 Plugin 'tpope/vim-dotenv.git'
 Plugin 'rainbow_parentheses.vim'
 Plugin 'paredit.vim'
+"Plugin 'bhurlow/vim-parinfer'
+Plugin 'eraserhd/parinfer-rust'
 Plugin 'guns/vim-clojure-static'
 Plugin 'jrdoane/vim-clojure-highlight'
 
@@ -64,7 +66,7 @@ set shiftwidth=4
 set expandtab
 
 " Paredit
-let g:paredit_mode = 1
+let g:paredit_mode = 0
 
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
