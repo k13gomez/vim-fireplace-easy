@@ -34,7 +34,7 @@ Plugin 'eraserhd/parinfer-rust'
 Plugin 'guns/vim-clojure-static'
 Plugin 'jrdoane/vim-clojure-highlight'
 
-Plugin 'Shougo/deoplete.nvim.git'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
 
